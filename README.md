@@ -97,8 +97,6 @@ tests/                 CPU unit and training/evaluation integration tests
 python -m unittest discover -s tests -v
 ```
 
-Tests use synthetic tensors and cover the loss equation, gradients, feature manifests, repetition alignment, category separation, complete-bank retrieval, subject exclusion, and checkpoint round-trips. They do not establish real-data accuracy. Full training, raw-recording preprocessing, and pretrained visual extraction require external datasets/weights.
-
 ## Citation
 
 ```bibtex
