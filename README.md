@@ -4,10 +4,6 @@ Official retrieval code for **[Region-Aware Hierarchical Sub-Feature Alignment f
 
 Yanan Zhu, Ziwei Xiang, Jiamin Wu, Jinyang Guo, Hongyuan Zhang, Chunfeng Song, Hongjian Fang, Yufei Guo, Xianglong Liu.
 
-RAHS aligns channel-wise EEG representations with 16 visual sub-features extracted by a frozen CLIP ViT-H/14 encoder and IP-Adapter resampler. A global contrastive objective and attention-weighted top-k local objective train the hierarchical EEG projections.
-
-**Release scope:** EEG preprocessing, image sub-feature extraction, intra-subject and leave-one-subject-out training, and image retrieval. Diffusion priors, reconstruction losses, and image generation are excluded. This release therefore does **not** implement the full reconstruction-assisted objective or claim reproduction of the paper's reported scores. The distinction between the paper equations, the experimental code, and the released defaults is documented in [Reproducibility](docs/reproducibility.md).
-
 ## Installation
 
 Use Python 3.10 or newer. Install an appropriate [PyTorch](https://pytorch.org/get-started/locally/) build, then:
