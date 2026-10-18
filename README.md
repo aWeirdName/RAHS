@@ -64,8 +64,6 @@ Use `--eeg-dir`, `--feature-dir`, and `--device` to override paths/device. All o
 
 Each run writes `config.yaml`, `split.json`, `history.jsonl`, `best.pt`, `last.pt`, and `metrics.json`. Existing run directories are never overwritten. Checkpoints contain model weights and configuration for inference, not optimizer/RNG state for training resume.
 
-For compatibility investigations, `configs/legacy_experiment.yaml` matches the active `main_new.py --pt_mode pt_c` conventions. It explicitly selects checkpoints on test data and must not be reported as an independent held-out evaluation. It is not a verified paper-result recipe.
-
 ## Evaluation
 
 ```bash
@@ -74,8 +72,6 @@ python -m rahs.evaluate \
   --output outputs/sub-01_seed100/evaluation.json \
   --export-features outputs/sub-01_seed100/retrieval_features.pt
 ```
-
-Retrieval ranks every query against the complete unique-image candidate bank: 200 images for the standard THINGS-EEG test split. Query batch size does not change the candidate set. Metrics are Top-1, Top-5, mean reciprocal rank (MRR), and matched-pair cosine similarity. With one relevant candidate per query, MRR equals the original implementation's `mAP`; it is labeled precisely here.
 
 ## Repository layout
 
