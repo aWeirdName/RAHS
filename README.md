@@ -16,8 +16,6 @@ python -m pip install -e .
 python -m pip install -e '.[features,preprocess]'
 ```
 
-Core CPU tests were run with Python 3.10, PyTorch 2.4.1 and NumPy 1.24.4. A GPU is recommended for the full-size model. No model or dataset downloads occur during import or training on cached features.
-
 ## Data preparation
 
 Download the [THINGS-EEG recordings](https://osf.io/anp5v/) and corresponding [THINGS images](https://osf.io/jum2f/). Organize the EEG-associated image splits as `training_images/<category>/<image>` and `test_images/<category>/<image>`; preserve their original category/filename ordering. See [Data format](docs/data.md) for existing preprocessed files and manifests.
