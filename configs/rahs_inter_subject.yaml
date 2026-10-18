@@ -1,0 +1,70 @@
+# Leave one subject out; validate on held-out training categories.
+seed: 100
+setting: inter-subject
+model:
+  num_tokens: 16
+  dim: 1280
+  order: after
+  global_depth: 3
+  fine_depth: 3
+  residual: false
+  adapter_residual: true
+  spectrum: power
+  dropout: 0.1
+alignment:
+  mode: topk
+  weight: 0.1
+  topk: 5
+  local_reduction: mean
+data:
+  eeg_dir: data/things-eeg/Preprocessed_data_250Hz_whiten
+  feature_dir: data/things-eeg/image_features
+  subject: sub-01
+  all_subjects:
+  - sub-01
+  - sub-02
+  - sub-03
+  - sub-04
+  - sub-05
+  - sub-06
+  - sub-07
+  - sub-08
+  - sub-09
+  - sub-10
+  channels:
+  - P7
+  - P5
+  - P3
+  - P1
+  - Pz
+  - P2
+  - P4
+  - P6
+  - P8
+  - PO7
+  - PO3
+  - POz
+  - PO4
+  - PO8
+  - O1
+  - Oz
+  - O2
+  time_window:
+  - 0
+  - 250
+  train_average: true
+  test_average: true
+  allow_legacy_index_alignment: false
+  num_workers: 0
+train:
+  epochs: 40
+  batch_size: 1024
+  lr: 0.0001
+  weight_decay: 0.0001
+  patience: 5
+  min_delta: 0.001
+  multi_positive: true
+evaluation:
+  protocol: heldout
+  validation_fraction: 0.1
+  batch_size: 200
