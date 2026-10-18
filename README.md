@@ -60,10 +60,6 @@ python -m rahs.train --config configs/rahs_inter_subject.yaml \
   --subject sub-01 --seed 100 --output outputs/loso_sub-01_seed100
 ```
 
-Use `--eeg-dir`, `--feature-dir`, and `--device` to override paths/device. All other settings are explicit in YAML. Repeated EEG trials are averaged by default. The standard configurations reserve 10% of **training categories** for validation, keeping all images/repetitions of each category together. The test split is evaluated after checkpoint selection.
-
-Each run writes `config.yaml`, `split.json`, `history.jsonl`, `best.pt`, `last.pt`, and `metrics.json`. Existing run directories are never overwritten. Checkpoints contain model weights and configuration for inference, not optimizer/RNG state for training resume.
-
 ## Evaluation
 
 ```bash
