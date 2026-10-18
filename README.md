@@ -109,9 +109,3 @@ python -m unittest discover -s tests -v
   pages = {6667-6676}
 }
 ```
-
-## Acknowledgments and license
-
-This release was organized from [aWeirdName/iclr26_exp1](https://github.com/aWeirdName/iclr26_exp1), which builds on **UBP: Bridging the Vision-Brain Gap with an Uncertainty-Aware Blur Prior** (CVPR 2025). We acknowledge [NICE-EEG](https://github.com/eeyhsong/NICE-EEG), [IP-Adapter](https://github.com/tencent-ailab/IP-Adapter), and the THINGS/THINGS-EEG dataset authors. See [NOTICE](NOTICE) for provenance.
-
-Code is distributed under the retained [Apache-2.0 license](LICENSE). Datasets and pretrained weights are obtained separately and retain their respective licenses.
