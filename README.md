@@ -16,38 +16,6 @@ python -m pip install -e .
 python -m pip install -e '.[features,preprocess]'
 ```
 
-## Data preparation
-
-Download the [THINGS-EEG recordings](https://osf.io/anp5v/) and corresponding [THINGS images](https://osf.io/jum2f/). Organize the EEG-associated image splits as `training_images/<category>/<image>` and `test_images/<category>/<image>`; preserve their original category/filename ordering. See [Data format](docs/data.md) for existing preprocessed files and manifests.
-
-```bash
-python -m rahs.preprocess \
-  --raw-dir data/things-eeg/Raw_data \
-  --image-dir data/things-eeg/Image_set \
-  --output data/things-eeg/Preprocessed_data_250Hz_whiten \
-  --subjects sub-01
-```
-
-Omit `--subjects` to process all ten participants. Whitening statistics are estimated from each session's training recordings only. The sample window matches the experimental preprocessing: the last 250 samples of the resampled `[-0.2, 1.0]` second epoch. It is not silently relabeled as an exact `[0, 1)` time grid.
-
-For image features, download `models/image_encoder/` and `sdxl_models/ip-adapter-plus_sdxl_vit-h.bin` from [h94/IP-Adapter](https://huggingface.co/h94/IP-Adapter). Only the CLIP encoder and image resampler are loaded; a diffusion pipeline is not required.
-
-```bash
-python -m rahs.extract_features \
-  --images data/things-eeg/Image_set/training_images \
-  --image-encoder checkpoints/IP-Adapter/models/image_encoder \
-  --adapter-checkpoint checkpoints/IP-Adapter/sdxl_models/ip-adapter-plus_sdxl_vit-h.bin \
-  --output data/things-eeg/image_features/image_latent_train.pt
-
-python -m rahs.extract_features \
-  --images data/things-eeg/Image_set/test_images \
-  --image-encoder checkpoints/IP-Adapter/models/image_encoder \
-  --adapter-checkpoint checkpoints/IP-Adapter/sdxl_models/ip-adapter-plus_sdxl_vit-h.bin \
-  --output data/things-eeg/image_features/image_latent_test.pt
-```
-
-The feature cache includes sub-features, attention importance, and image IDs. EEG/image pairs are matched by ID rather than assumed row ordering.
-
 ## Training
 
 ```bash
