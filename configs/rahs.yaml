@@ -1,4 +1,4 @@
-# Retrieval-only RAHS. See docs/reproducibility.md for paper/source differences.
+# Retrieval-only RAHS.
 seed: 100
 setting: intra-subject
 model:

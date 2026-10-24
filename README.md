@@ -51,7 +51,6 @@ rahs/
   resampler.py         IP-Adapter-compatible visual resampler
   preprocess.py        Raw EEG epoching and training-only whitening
 configs/               Explicit intra-subject, inter-subject, legacy settings
-docs/                  Data contract, provenance, and reproduction limits
 tests/                 CPU unit and training/evaluation integration tests
 ```
 
